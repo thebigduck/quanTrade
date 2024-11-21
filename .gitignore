@@ -13,3 +13,6 @@ trading_env/
 
 # Jupyter Notebooks checkpoints
 **/.ipynb_checkpoints
+
+#VSC
+.vscode
