@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Data files
+data/*.csv
+
+# Environment files
+.env
+venv/
+trading_env/
+
+# Jupyter Notebooks checkpoints
+**/.ipynb_checkpoints
