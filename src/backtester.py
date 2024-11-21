@@ -1,6 +1,6 @@
 # src/backtester.py
 
-import backtrader as bt 
+import backtrader as bt
 
 def run_backtest(data, strategy, **kwargs):
     """
@@ -9,17 +9,16 @@ def run_backtest(data, strategy, **kwargs):
     cerebro = bt.Cerebro()
     cerebro.addstrategy(strategy, **kwargs)
 
-    # Create a Data Feed
+
     data_feed = bt.feeds.PandasData(
         dataname=data,
         datetime=None,
         open='open',
         high='high',
         low='low',
-        close='close',
+        close='adj close',  # Use adjusted close prices as 'close'
         volume='volume',
-        openinterest=-1,
-        adjclose='adj close'  # Include if using adjusted close prices
+        openinterest=-1
     )
     cerebro.adddata(data_feed)
 
