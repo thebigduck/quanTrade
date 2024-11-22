@@ -5,6 +5,7 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "streamlit",
 	"requests>=2.25.1",
 	"pandas>=1.2.0",
     "numpy>=1.19.5",
