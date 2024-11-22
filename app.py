@@ -1,13 +1,9 @@
-# app.py
-
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 
 from src.data_fetcher import fetch_stock_data
 from src.data_processor import preprocess_data
 from src.backtester import run_backtest
-from src.visualizer import plot_stock_data
 from src.strategies.sma_crossover import SmaCrossoverStrategy
 from src.config import DEFAULT_TICKER, START_DATE, END_DATE
 
