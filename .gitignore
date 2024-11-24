@@ -1,18 +1,24 @@
 # Python
 __pycache__/
-*.py[cod]
-*.egg-info/
+*.pyc
 
-# Data files
-data/*.csv
-
-# Environment files
+# Environment Variables
 .env
-.venv
-trading_env/
 
-# Jupyter Notebooks checkpoints
-**/.ipynb_checkpoints
+# Data and Models
+data/
+!data/models/
+data/historical_order_books/
+data/models/growth_model.pkl
 
-#VSC
-.vscode/
+# Logs
+logs/
+
+# Jupyter Notebook Checkpoints
+.ipynb_checkpoints/
+
+# Virtual Environment
+venv/
+
+# Other
+.DS_Store

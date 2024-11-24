@@ -1,3 +1,5 @@
+# src/strategies/sma_crossover.py
+
 import backtrader as bt
 
 class SmaCrossoverStrategy(bt.Strategy):

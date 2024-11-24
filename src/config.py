@@ -1,9 +1,5 @@
-import os
-from dotenv import load_dotenv
+# src/config.py
 
-load_dotenv()
+from config import ALPACA_API_KEY, ALPACA_SECRET_KEY, ALPACA_BASE_URL, DATA_DIR, MODEL_DIR, LOG_DIR
 
-API_KEY = os.getenv('API_KEY')
-DEFAULT_TICKER = os.getenv('DEFAULT_TICKER', 'AAPL')
-START_DATE = os.getenv('START_DATE', '2020-01-01')
-END_DATE = os.getenv('END_DATE', '2021-01-01')
+# You can include additional configuration variables specific to the src package here.

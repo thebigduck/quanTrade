@@ -1,24 +1,29 @@
+# tests/test_strategies.py
+
+"""
+Unit tests for trading strategies.
+"""
+
 import unittest
-import pandas as pd
+from src.strategies.growth_strategy import GrowthStrategy
 import backtrader as bt
-from src.strategies.sma_crossover import SmaCrossoverStrategy
+from src.data_fetcher import fetch_historical_data
 
 class TestStrategies(unittest.TestCase):
-    def test_sma_crossover_strategy(self):
-        data = pd.DataFrame({
-            'Open': [100, 102, 104, 103, 105],
-            'High': [101, 103, 105, 104, 106],
-            'Low': [99, 101, 103, 102, 104],
-            'Close': [100, 102, 104, 103, 105],
-            'Volume': [1000, 1100, 1200, 1300, 1400],
-            'Adj Close': [100, 102, 104, 103, 105]
-        }, index=pd.date_range('2020-01-01', periods=5))
-        cerebro = bt.Cerebro()
-        cerebro.addstrategy(SmaCrossoverStrategy)
+    def test_growth_strategy(self):
+        ticker = "AAPL"
+        data = fetch_historical_data(ticker, "2020-01-01", "2020-12-31")
+        data.index = pd.to_datetime(data.index)
         data_feed = bt.feeds.PandasData(dataname=data)
-        cerebro.adddata(data_feed)
-        cerebro.run()
-        # Test passes if no exceptions are raised
 
-if __name__ == '__main__':
+        cerebro = bt.Cerebro()
+        cerebro.addstrategy(GrowthStrategy)
+        cerebro.adddata(data_feed)
+        cerebro.broker.setcash(100000.0)
+
+        cerebro.run()
+        final_value = cerebro.broker.getvalue()
+        self.assertGreater(final_value, 0)
+
+if __name__ == "__main__":
     unittest.main()
